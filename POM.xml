@@ -1,0 +1,97 @@
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>webVersion2</groupId>
+	<artifactId>webVersion2</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0</version>
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+<dependencies>
+	<dependency>
+		<groupId>org.testng</groupId>
+		<artifactId>testng</artifactId>
+		<version>6.9.10</version>
+		</dependency>
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-java</artifactId>
+		<version>2.53.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-server</artifactId>
+		<version>2.53.1</version>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	</dependency>
+	<dependency>
+    	<groupId>net.sourceforge.jexcelapi</groupId>
+    	<artifactId>jxl</artifactId>
+    	<version>2.6.10</version>
+	</dependency>
+	<dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc7</artifactId>
+        <version>12.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>net.sf.json-lib</groupId>
+        <artifactId>json-lib</artifactId>
+        <version>2.4</version>
+        <classifier>jdk15</classifier>
+    </dependency>
+    <dependency>
+    	<groupId>org.mariadb.jdbc</groupId>
+    	<artifactId>mariadb-java-client</artifactId>
+    	<version>2.5.1</version>
+	</dependency>
+	<dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20190722</version>
+    </dependency>
+</dependencies>
+<profiles>
+	<profile>
+		<id>connect</id>
+		<properties>
+			<testSuite>Connect.xml</testSuite>
+		</properties>
+	</profile>
+</profiles>
+<build>
+	<plugins>
+	<!-- Execute integration tests -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>2.15</version>
+	<configuration>
+		<argLine>-Dfile.encoding=UTF-8</argLine>
+	</configuration>
+<executions>
+	<execution>
+		<id>d-integration-test</id>
+			<phase>integration-test</phase>
+			<goals>
+				<goal>test</goal>
+			</goals>
+		<configuration>
+		<!-- skip>true</skip -->
+		<suiteXmlFiles>
+			<suiteXmlFile>src\main\resources\suites\Connect.xml</suiteXmlFile>
+		</suiteXmlFiles>
+		</configuration>
+	</execution>
+</executions>
+</plugin>
+</plugins>
+</build>
+</project>

@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sale Functional Test" verbose="1" preserve-order="true">
+	<test name="Connect" enabled="true">
+		<groups>
+			<run>
+				<exclude name="pending" />
+			</run>
+		</groups>
+	<packages>
+		<package name="org.selenium.automationtest.testsuite.*" />
+		</packages>
+	</test>
+	<listeners>
+		<listener class-name="org.selenium.automationtest.common.TestReport" />
+	</listeners>
+</suite>
